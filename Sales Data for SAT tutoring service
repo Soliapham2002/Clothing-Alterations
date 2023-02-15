@@ -1,0 +1,14 @@
+SELECT
+  tutor_name,
+  SUM(hours) AS total_hours,
+  SUM(hours) * rate AS total_revenue,
+  AVG(rating) AS average_rating,
+  COUNT(DISTINCT student_id) AS total_students
+FROM
+  sessions
+JOIN
+  tutors ON sessions.tutor_id = tutors.tutor_id
+GROUP BY
+  tutor_name
+ORDER BY
+  total_revenue DESC;
