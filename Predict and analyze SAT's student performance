@@ -1,0 +1,12 @@
+SELECT
+  student_id,
+  COUNT(*) AS total_sessions,
+  AVG(score) AS average_score,
+  MIN(score) AS min_score,
+  MAX(score) AS max_score
+FROM
+  sessions
+WHERE
+  exam_type = 'SAT'
+GROUP BY
+  student_id;
