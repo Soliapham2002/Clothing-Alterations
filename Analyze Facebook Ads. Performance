@@ -1,0 +1,14 @@
+SELECT 
+  campaign_name, 
+  SUM(impressions) AS total_impressions,
+  SUM(clicks) AS total_clicks,
+  ROUND(SUM(clicks) / SUM(impressions) * 100, 2) AS click_through_rate,
+  SUM(amount_spent) AS total_spent,
+  ROUND(SUM(amount_spent) / SUM(clicks), 2) AS cost_per_click,
+  ROUND(SUM(amount_spent) / SUM(impressions) * 1000, 2) AS cost_per_mille
+FROM
+  ads_data
+GROUP BY
+  campaign_name
+ORDER BY
+  total_spent DESC;
